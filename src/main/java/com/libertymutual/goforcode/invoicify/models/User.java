@@ -37,7 +37,7 @@ public class User implements UserDetails {
 	private List<UserRole> roles;
 
 	public User() {
-	}
+	}  
 
 	public User(String username, String password, String roleName) {
 		this.username = username;
@@ -53,16 +53,16 @@ public class User implements UserDetails {
 //		for (UserRole role : roles) {
 //			roleNames.add("ROLE_" + role.getName());
 //		}
-//		is same as first 3 lines below:
+//		is same as first 3 lines below:  
 		
-		List<String> roleNames = roles.stream()
+	 	List<String> roleNames = roles.stream()
 			.map(userRole -> "ROLE_" + userRole.getName())
 			.collect(Collectors.toList());
 		
 		String authorityString = String.join(",", roleNames); 
 		return AuthorityUtils.commaSeparatedStringToAuthorityList(authorityString);	
-	}
-
+	} 
+ 
 	@Override
 	public String getPassword() {
 		return password;
@@ -72,7 +72,7 @@ public class User implements UserDetails {
 	public String getUsername() {
 		return username;
 	}
-
+ 
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
